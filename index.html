@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamburger menu</title>
+    <style>
+
+        /* Standaard (desktop) is het menu horizontaal */
+        #navigatie-menu { 
+            display: flex;
+            background-color: white;
+            
+        }
+
+        #navigatie-menu a {
+            margin: 0 0.4em;
+        }
+
+        /* 
+            Standaard (desktop) is de hamburger verborgen, omdat het menu toch al zichtbaar is.
+            Ook is de checkbox (die het menu opent/sluit) altijd verborgen
+         */
+        #navigatie-toggle,
+        #navigatie-toggle + label {
+            display: none;
+        }
+
+        @media screen and (max-width: 780px) {
+            /* In de mobiele versie wordt de hamburger getoond */
+            #navigatie-toggle + label {
+                display: block;
+            }
+
+            /* In mobiel is het menu standaard verborgen */
+            #navigatie-toggle ~ #navigatie-menu {
+                display: none;
+            }
+            
+            /* Als checkbox is aangevinkt, toon menu */
+            #navigatie-toggle:checked ~ #navigatie-menu {
+                display: flex;
+            }
+
+            /* Het menu is in de mobiele versie verticaal en absoluut gepositioneerd (over de rest van de pagina heen) */
+            #navigatie-menu {
+                position: absolute;
+                flex-direction: column;
+            }
+
+            #navigatie-menu a {
+                margin: 0.2em 0;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <section id="navigatie">
+            <input type="checkbox" id="navigatie-toggle">
+            <label id="navigatie-toggle" for="navigatie-toggle">≡</label>
+
+            <nav id="navigatie-menu">
+                <a href="#">Item 1</a>
+                <a href="#">Item 2</a>
+                <a href="#">Item 3</a>
+                <a href="#">Item 4</a>
+            </nav>
+        </section>
+    </header>
+    <main>
+        <h1>Hamburger menu</h1>
+    </main>
+</body>
+</html>
